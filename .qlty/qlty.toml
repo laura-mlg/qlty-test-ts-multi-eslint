@@ -1,20 +1,28 @@
+# This configuration was generated with the setup-qlty-toml skill.
 config_version = "0"
 
-[smells]
-min_duplication_lines = 30
+exclude_patterns = [
+  "node_modules/**",
+  "dist/**",
+  "build/**",
+  "**/*.d.ts",
+  "**/*.min.js",
+]
 
+[smells]
+mode = "comment"
+
+# Required — points to the built-in Qlty plugin registry.
 [[source]]
 name = "default"
-directory = "https://github.com/qltysh/plugins"
+default = true
 
 [[plugin]]
 name = "trufflehog"
-source = "default"
 mode = "block"
 
 [[plugin]]
 name = "eslint"
-source = "default"
 mode = "comment"
 prefix = "packages/ui"
 config_files = ["packages/ui/.eslintrc.js"]
@@ -28,7 +36,6 @@ extra_packages = [
 
 [[plugin]]
 name = "eslint"
-source = "default"
 mode = "comment"
 prefix = "packages/api"
 config_files = ["packages/api/.eslintrc.js"]
@@ -37,14 +44,4 @@ extra_packages = [
   "@typescript-eslint/parser@6.18.0",
   "@typescript-eslint/eslint-plugin@6.18.0",
   "eslint-plugin-import@2.29.1",
-]
-
-[exclude_patterns]
-patterns = [
-  "node_modules/**",
-  "dist/**",
-  "build/**",
-  "**/*.d.ts",
-  "**/*.min.js",
-  "**/*.min.css",
 ]
