@@ -1,0 +1,50 @@
+config_version = "0"
+
+[smells]
+min_duplication_lines = 30
+
+[[source]]
+name = "default"
+directory = "https://github.com/qltysh/plugins"
+
+[[plugin]]
+name = "trufflehog"
+source = "default"
+mode = "block"
+
+[[plugin]]
+name = "eslint"
+source = "default"
+mode = "comment"
+prefix = "packages/ui"
+config_files = ["packages/ui/.eslintrc.js"]
+affects_cache = ["packages/ui/tsconfig.json"]
+extra_packages = [
+  "@typescript-eslint/parser@6.18.0",
+  "@typescript-eslint/eslint-plugin@6.18.0",
+  "eslint-plugin-react@7.33.2",
+  "eslint-plugin-react-hooks@4.6.0",
+]
+
+[[plugin]]
+name = "eslint"
+source = "default"
+mode = "comment"
+prefix = "packages/api"
+config_files = ["packages/api/.eslintrc.js"]
+affects_cache = ["packages/api/tsconfig.json"]
+extra_packages = [
+  "@typescript-eslint/parser@6.18.0",
+  "@typescript-eslint/eslint-plugin@6.18.0",
+  "eslint-plugin-import@2.29.1",
+]
+
+[exclude_patterns]
+patterns = [
+  "node_modules/**",
+  "dist/**",
+  "build/**",
+  "**/*.d.ts",
+  "**/*.min.js",
+  "**/*.min.css",
+]
