@@ -1,0 +1,8 @@
+{
+  "name": "qlty-test-ts-multi-eslint",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}
